@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   scope '/api/v2' do
     #resources :users, except: [:index, :show, :new, :edit]
-    resources :users, except: [ :new, :edit] do
+    resources :users, except: [ :index, :new, :edit] do
       resource :profile 
     end
     #resources :profile, except: [:index, :new, :edit]
