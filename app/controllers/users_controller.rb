@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   # GET /users
   # GET /users.json
   def index
@@ -51,6 +52,6 @@ class UsersController < ApplicationController
   private
     
     def user_params
-      params.require(:user).permit(:name, :password, :mail, :fbid)
+      params.require(:user).permit(:name, :password, :email, :fbid)
     end
 end
