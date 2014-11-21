@@ -5,6 +5,7 @@ class CreateProfiles < ActiveRecord::Migration
     	t.string	:surname
     	t.datetime	:birth
     	t.string	:country
+      t.string  :location
    		t.timestamps
    		t.belongs_to :user
     end

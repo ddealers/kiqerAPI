@@ -10,8 +10,13 @@ class ProfilesController < ApplicationController
 	# POST /profile/create.json
 	def create
 		@profile = Profile.new(profile_params)
-		if @profile.save
-			render json: @profile, status: :created
+		@profile.user = User.find(params[:user_id])
+		if params[:user_id].present?
+			if @profile.save
+				render json: @profile, status: :created
+			else
+				render json: @profile.errors, status: :unprocessable_entity
+			end
 		else
 			render json: @profile.errors, status: :unprocessable_entity
 		end
@@ -31,6 +36,7 @@ class ProfilesController < ApplicationController
 	private
 
 	def profile_params
+		params.require(:user_id)
 		params.require(:profile).permit(:name, :surname, :birth, :country)
 	end
 end
