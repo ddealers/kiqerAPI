@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, length: {minimum: 6}
 	has_one :profile, inverse_of: :user,  dependent: :destroy
+	has_many :posts
+	has_many :comments
 end

@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   scope '/api/v2' do
     #resources :users, except: [:index, :show, :new, :edit]
     resources :users, except: [ :index, :new, :edit] do
-      resource :profile 
+      resource :profile, except: [:new, :edit]
+      resources :posts, except: [:new, :edit]
     end
+    resources :posts, except: [:new, :edit] do
+      resources :comments, except: [:new, :edit]
+    end
+  resources :comments, except: [:index, :show, :update, :new, :edit, :create]
     #resources :profile, except: [:index, :new, :edit]
   end
   # The priority is based upon order of creation: first created -> highest priority.
