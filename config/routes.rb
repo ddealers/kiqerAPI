@@ -9,8 +9,9 @@ Rails.application.routes.draw do
       resources :comments, except: [:new, :edit]
     end
   resources :comments, except: [:index, :show, :update, :new, :edit, :create]
-    #resources :profile, except: [:index, :new, :edit]
+  resources :kiqs, except: [:index, :edit, :update, :show, :new]
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
