@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
 	# PATCH/PUT /profile/1
 	# PATCH/PUT /profile/1.json
 	def update
-		@profile = Profile.find(params[:id])
+		@profile = Profile.where(user_id: params[:user_id]).take
 		if @profile.update(profile_params)
 			head :no_content
 		else
@@ -36,7 +36,7 @@ class ProfilesController < ApplicationController
 	private
 
 	def profile_params
-		params.require(:user_id)
-		params.require(:profile).permit(:name, :surname, :birth, :country)
+		#params.require(:user_id)
+		params.require(:profile).permit(:name, :surname, :birth, :country, :location)
 	end
 end

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20141119214313) do
     t.string   "surname"
     t.datetime "birth"
     t.string   "country"
+    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
