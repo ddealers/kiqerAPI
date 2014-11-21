@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
 				uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, length: {minimum: 6}
-	has_one :profile
+	has_one :profile, inverse_of: :user,  dependent: :destroy
 end

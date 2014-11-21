@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
 	# GET /profile
 	# GET /profile.json
 	def show
-		@profile = Profile.find(params[:user_id])
+		@profile = Profile.where(user_id: params[:user_id]).take
 		render json: @profile
 	end
 
@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
 	def update
 		@profile = Profile.where(user_id: params[:user_id]).take
 		if @profile.update(profile_params)
-			head :no_content
+			render json: @profile, status: 'updated'
 		else
 			render json: @profile.errors, status: :unprocessable_entity
 		end
@@ -36,7 +36,6 @@ class ProfilesController < ApplicationController
 	private
 
 	def profile_params
-		#params.require(:user_id)
 		params.require(:profile).permit(:name, :surname, :birth, :country, :location)
 	end
 end
