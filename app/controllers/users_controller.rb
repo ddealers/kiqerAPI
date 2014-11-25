@@ -49,6 +49,29 @@ class UsersController < ApplicationController
 		head :no_content
 	end
 
+	# POST  /users/login
+	def login
+		@user = User.find_by(email: params[:email])
+    	if @user && @user.authenticate(params[:password])
+    		render :text => true
+    	else
+    		render :text => false
+    	end
+	end
+
+	# POST /kiqs/1/find/2
+	# POST /kiqs/1/find/2.json
+	def find
+		@kiq = Kiq.where({follow: params[:user_id], follower: params[:id]})
+ 		
+ 		if @kiq.blank?
+ 			render :text => false
+		else
+			render :text => true
+		end
+	end
+
+
 	private
 
 	def user_params
