@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   scope '/api/v2' do
     #resources :users, except: [:index, :show, :new, :edit]
+    post 'login/', to: 'users#login'
     resources :users, except: [ :index, :new, :edit] do
       resource :profile, except: [:new, :edit]
       resources :posts, except: [:new, :edit]
+      get 'kiq/:id',  to: 'users#find'
     end
     resources :posts, except: [:new, :edit] do
       resources :comments, except: [:new, :edit]
