@@ -31,9 +31,8 @@ class UsersController < ApplicationController
 	# PATCH/PUT /users/1.json
 	def update
 		@user = User.find(params[:id])
-
 		if @user.update(user_params)
-			head :no_content
+			render :text => true
 		else
 			render json: @user.errors, status: :unprocessable_entity
 		end
@@ -74,7 +73,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:name, :password, :email, :fbid)
+		params.require(:user).permit(:name, :password, :email, :tipo, :fbid)
 	end
 
 end

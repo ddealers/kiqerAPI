@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20141121191322) do
     t.string   "name",            null: false
     t.string   "password_digest", null: false
     t.string   "email",           null: false
-    t.integer  "type"
+    t.integer  "tipo"
     t.string   "fbid"
     t.datetime "created_at"
     t.datetime "updated_at"
