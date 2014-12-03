@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', 	'4.1.7'
 gem 'bcrypt', 	'~> 3.1.7'
 gem 'rails-api'
-
+gem 'rack-cors', :require => 'rack/cors'
 gem 'spring', :group => :development
 
 
