@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 	def login
 		@user = User.find_by(email: params[:email])
     	if @user && @user.authenticate(params[:password])
-    		render :text => true
+    		render json: @user.id
     	else
     		render :text => false
     	end
