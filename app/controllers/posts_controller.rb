@@ -3,8 +3,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
-
-    render json: @posts
+    render json: @posts.to_json(:include => :user)
   end
 
   # GET /posts/1
@@ -12,7 +11,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
 
-    render json: @post
+    render json: @post.to_json(include: [:user,:comments => {:include => :user }] )
   end
 
   # POST /posts

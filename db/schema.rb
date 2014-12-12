@@ -45,16 +45,17 @@ ActiveRecord::Schema.define(version: 20141121191322) do
     t.string   "surname"
     t.datetime "birth"
     t.string   "country"
-    t.integer  "user_id"
+    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
     t.string   "name",            null: false
     t.string   "password_digest", null: false
     t.string   "email",           null: false
-    t.integer  "type"
+    t.integer  "tipo"
     t.string   "fbid"
     t.datetime "created_at"
     t.datetime "updated_at"
